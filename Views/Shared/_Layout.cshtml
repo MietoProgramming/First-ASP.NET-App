@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - VideoImagePlatform</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VideoImagePlatform</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>*@
+
+    <div id="header">
+        <div id="logoName">
+            <img id="logo" src="~/imgs/person.png" alt="VideoImage platform logo" asp-append-version="true">
+            <h2>MojitoTube</h2>
+        </div>
+        <div id="search">
+            <input type="text" name="searchInput" id="searchInputId" value="Search" onclick="clearSearch(this)">
+            <img src="~/imgs/plus.png" alt="Search icon" onclick="" asp-append-version="true">
+        </div>
+        <div id="login">
+            <a href="">Log in</a>
+            <a href="">Sign in</a>
+        </div>
+    </div>
+
+    <div>
+            @RenderBody()
+    </div>
+
+    <div id="footer">
+            <br>
+            <div>
+                <a asp-controller="home" asp-action="index">home page</a>
+                <a>best list</a>
+                <a>favourites</a>
+                <a>log in</a>
+                <a>sing in</a>
+                <h2>Author</h2>
+                <a href="https://github.com/mietoprogramming">MietoProgramming</a>
+            </div>
+            <div>
+                <a target="_blank" href="https://icons8.com/icons/set/settings">settings icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/hd-720p">hd 720p icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/stack-of-photos">photo gallery icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/minus">minus icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/plus">plus icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/comments">comments icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/upload">upload icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/person-male">person icon</a>
+                <a target="_blank" href="https://icons8.com/icons/set/hearts">heart outline icon</a> icons by <a target="_blank" href="https://icons8.com">icons8</a>
+            </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

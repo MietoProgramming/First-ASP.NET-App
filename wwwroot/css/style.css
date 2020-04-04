@@ -1,0 +1,116 @@
+body{
+    margin: 0px;
+}
+
+#options {
+    float: left;
+    width: 20%;
+    height: 60%;
+    background-color: rgb(127, 204, 255);
+}
+
+#options ul,#options li,#options a{
+    list-style-type: none;
+    text-decoration: none;
+    color: rgb(89, 0, 255);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 33% 33% 34%;
+}
+
+#options img {
+    width:40px;
+    float: left;
+    }
+
+    #options a {
+    min-width: 60%;
+    display: block;
+    }
+
+    #content {
+        float: left;
+        width: 80%;
+        height: 60%;
+        background-color: blueviolet;
+        display: grid;
+        grid-template-columns: 33% 34% 33%;
+        grid-template-rows: 50% 50%;
+    }
+
+#content div{
+    border: 1px solid white;
+    width: auto;
+}
+
+#header {
+    height: 20%;
+    width: 100%;
+    background-color: rgb(127, 204, 255);
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-rows: 100%;
+}
+
+#logoName {
+    width: 20%;
+    height: 100%;
+}
+
+#search {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+#login{
+    width:100%;
+    height: 100%;
+}
+
+#login a{
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 100%;
+    float: left;
+}
+
+#searchInputId{
+    align-items: center;
+    color: grey;
+    border-radius: 5px;
+    width: 70%;
+    height: 30px;
+}
+
+#footer {
+    float: left;
+    height: 20%;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    position:relative;
+}
+
+#footer div{
+    width: auto;
+    height: auto;
+}
+
+#footer a{
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#footer h2{
+    font-family: 'Bookman';
+    color: burlywood;
+}
+
