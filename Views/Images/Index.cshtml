@@ -1,7 +1,34 @@
 ﻿
-@{
-    ViewData["Title"] = "Index";
-}
+<div id="contentImage">
 
-<h1>Index</h1>
+    <div id="imageNewest10">
+        <p>Newest 10</p>
+        <div class="swiper-container-newest">
+            <div class="swiper-wrapper">
+                @for (int i = 0; i < 12; i++)
+                {
+                    <img class="swiper-slide swiper-slide-newest" src="~/imgs/thumbnail.jpg" asp-append-version="true">
+                }
+            </div>
+            <div class="swiper-pagination-newest"></div>
+        </div>
+        <hr />
+    </div>
+    
+    <div id="imageBest">
+        <p>Best pictures</p>
+        <div class="swiper-container-best">
+            <div class="swiper-wrapper">
+                @for (int i = 0; i < 20; i++)
+                {
+                    <div class="swiper-slide-best swiper-slide">
+                        <img src="~/imgs/thumbnail.jpg" asp-append-version="true">
+                    </div>
+                }
+                <div class="swiper-pagination-best"></div>
+            </div>
+            <hr />
+        </div>
+    </div>
+</div>
 

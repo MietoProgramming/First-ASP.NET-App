@@ -1,15 +1,12 @@
-﻿<div id="content">
-    @for (int i = 0; i < 6; i++)
+﻿<div id="contentIndex">
+    @for (int i = 0; i < 12; i++)
     {
-        <div>
-            <a>
-                <img src="~/imgs/thumbnail.jpg" alt="Miniaturka" asp-append-version="true">
-            </a>
-            <hr>
+        <a id="card">
+            <img src="~/imgs/thumbnail.jpg" alt="Miniaturka" asp-append-version="true">
             <div id="ContentDescribe">
-                <h3>Title of a video @i</h3>
+                <h3>Really loooong title of that video oooooo really @i</h3>
                 <p>Views: @((i+1).ToString() + "00 000")</p>
             </div>
-        </div>
+        </a>
     }
 </div>

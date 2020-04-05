@@ -24,3 +24,41 @@ function Toggle(text) {
     };
     toastr.warning(text.toString() + " doesn\'t work currently :(", "Warning!");
 }
+
+var swiperNewest = new Swiper('.swiper-container-newest', {
+    effect: 'cube',
+    grabCursor: true,
+    cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94,
+    },
+    pagination: {
+        el: '.swiper-pagination-newest',
+    },
+});
+
+var swiperBest = new Swiper('.swiper-container-best', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    // init: false,
+    pagination: {
+        el: '.swiper-pagination-best',
+        clickable: true,
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+        },
+        1024: {
+            slidesPerView: 2,
+            spaceBetween: 50,
+        },
+    }
+});

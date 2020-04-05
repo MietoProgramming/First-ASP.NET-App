@@ -1,7 +1,16 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿<div id="contentVideo">
+    @for (int i = 0; i < 12; i++)
+    {
+        <a id="cardLong">
+            <img src="~/imgs/thumbnail.jpg" alt="Miniaturka" asp-append-version="true">
+            <div id="cardLongDescribe">
+                <h3>Really loooong title of that video oooooo really @i</h3>
+                <h6>Views: @((i+1).ToString() + "00 000")</h6>
+                <div></div>
+                <p>Describe really long long i don't joke it is a huge description as on a long card so you can start my project on github :)</p>
+            </div>
+        </a>
+    }
+</div>
 
-<h1>Index</h1>
 
