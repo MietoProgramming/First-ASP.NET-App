@@ -1,34 +1,50 @@
-﻿
-<div id="contentImage">
+﻿@model ListImageModel
 
-    <div id="imageNewest10">
-        <p>Newest 10</p>
-        <div class="swiper-container-newest">
-            <div class="swiper-wrapper">
-                @for (int i = 0; i < 12; i++)
-                {
-                    <img class="swiper-slide swiper-slide-newest" src="~/imgs/thumbnail.jpg" asp-append-version="true">
-                }
-            </div>
-            <div class="swiper-pagination-newest"></div>
-        </div>
-        <hr />
-    </div>
-    
-    <div id="imageBest">
-        <p>Best pictures</p>
-        <div class="swiper-container-best">
-            <div class="swiper-wrapper">
-                @for (int i = 0; i < 20; i++)
-                {
-                    <div class="swiper-slide-best swiper-slide">
-                        <img src="~/imgs/thumbnail.jpg" asp-append-version="true">
-                    </div>
-                }
-                <div class="swiper-pagination-best"></div>
+    <div id="contentImage">
+        <div id="imageNewest10">
+            <p>Newest 10</p>
+            <div class="swiper-container-newest">
+                <div class="swiper-wrapper">
+                    @foreach (var image in Model.newestImages)
+                    {
+                        <img ondblclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description','@image.Id')" class="swiper-slide swiper-slide-newest" src="@image.Url" />
+                    }
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
             <hr />
         </div>
+
+        <div id="imageBest">
+            <p>Best 10</p>
+            <div class="swiper-container swiper-container-best">
+                <div class="swiper-wrapper">
+                    @foreach (var image in Model.bestImages)
+                    {
+                        <img class="swiper-slide" ondblclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description','@image.Id')" src="@image.Url"/>
+                    }
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <hr />
+        </div>
+
+        <div id="imageAll">
+            <p>All pictures</p>
+            <div class="swiper-container swiper-container-all">
+                <div class="swiper-wrapper">
+                    @foreach (var image in Model.allImages)
+                    {
+                        <img class="swiper-slide" ondblclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description','@image.Id')" src="@image.Url"/>
+                    }
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <hr />
+        </div>
+
+        <div>
+            <a onclick="onClickUploadImage()" type="button" class="btn btn-success" id="buttonUploadImage">Upload your image!</a>
+        </div>
     </div>
-</div>
 

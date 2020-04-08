@@ -17,5 +17,7 @@ namespace VideoImagePlatform.Models
 
         public string Description { get; set; }
 
+        public int Views { get; set; }
+
     }
 }

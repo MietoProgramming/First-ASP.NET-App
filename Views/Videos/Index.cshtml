@@ -1,16 +1,29 @@
-﻿<div id="contentVideo">
-    @for (int i = 0; i < 12; i++)
+﻿@model ListVideoModel
+
+<div id="contentVideo">
+    @foreach (var video in Model.allVideos)
     {
-        <a id="cardLong">
-            <img src="~/imgs/thumbnail.jpg" alt="Miniaturka" asp-append-version="true">
+    <div id="cardLongBox">
+        <a id="cardLong" onclick="openViewWindow('@video.Url','@video.Name','@video.Views','@video.Description','@video.Id')">
+            <video src="@video.Url"></video>
             <div id="cardLongDescribe">
-                <h3>Really loooong title of that video oooooo really @i</h3>
-                <h6>Views: @((i+1).ToString() + "00 000")</h6>
+                <h3>@video.Name</h3>
+                <h6>Views: @video.Views</h6>
                 <div></div>
-                <p>Describe really long long i don't joke it is a huge description as on a long card so you can start my project on github :)</p>
+                <p>@video.Description</p>
             </div>
         </a>
+        <div id="cardLongButtons">
+            <a onclick="onClickEditVideo('@video.Name','@video.Description','@video.Id')" type="button" class="btn btn-primary" id="buttonEditVideo">Edit</a>
+            <a onclick="onClickDeleteVideo('@video.Id')" type="button" class="btn btn-danger" id="buttonDeleteVideo">Delete</a>
+        </div>
+    </div>
     }
+
+    <div>
+        <a onclick="onClickUploadVideo()" type="button" class="btn btn-success" id="buttonUploadVideo">Upload your video!</a>
+    </div>
 </div>
+
 
 
