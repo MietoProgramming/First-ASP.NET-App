@@ -1,0 +1,7 @@
+żółty: #fff748
+fioletowy: #3c1a5b
+
+czarny: #1d1b1b
+#2a2c2a
+czerwono-pomarańczowy: #e65c00 
+icons: #353434, #E65C00 

@@ -15,13 +15,13 @@
 <body>
     <div id="header">
         <a id="logoName" asp-action="Index" asp-controller="Home">
-            <img id="logo" src="~/imgs/person.png" alt="VideoImage platform logo" asp-append-version="true">
+            <img id="logo" src="~/imgs/home.png" alt="VideoImage platform logo" asp-append-version="true">
             <h1>MojitoTube</h1>
         </a>
         <div id="search">
 
             <input type="text" name="searchInput" id="searchInputId" value="Search" onclick="clearSearch(this)">
-            <img src="~/imgs/plus.png" alt="Search icon" onclick="" asp-append-version="true">
+            <img src="~/imgs/search.png" alt="Search icon" onclick="" asp-append-version="true">
         </div>
         <div id="login">
             <a>Log in</a>
@@ -34,20 +34,20 @@
             <ul>
                 <li id="videos">
                     <a asp-action="Index" asp-controller="Videos">
-                        <img src="~/imgs/video.png" alt="Videos" asp-append-version="true">
+                        <img src="~/imgs/video2.png" alt="Videos" asp-append-version="true">
                         <h3>Videos</h3>
                     </a>
 
                 </li>
                 <li id="photos">
                     <a asp-action="Index" asp-controller="Images">
-                        <img src="~/imgs/gallery.png" alt="Photos" asp-append-version="true">
+                        <img src="~/imgs/gallery2.png" alt="Photos" asp-append-version="true">
                         <h3>Photos</h3>
                     </a>
                 </li>
                 <li id="favourites">
                     <a onclick="Toggle('Favourites')">
-                        <img src="~/imgs/heart.png" alt="Favourites" asp-append-version="true">
+                        <img src="~/imgs/favourites.png" alt="Favourites" asp-append-version="true">
                         <h3>Favourites</h3>
                     </a>
                 </li>
