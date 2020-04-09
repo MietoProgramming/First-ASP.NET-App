@@ -5,6 +5,15 @@
 /*/Image/Index*/
 @import "imageIndex.css";
 
+.bg-orange {background-color: #e65c00 !important;}
+.text-orange {color: #e65c00 !important;}
+.bg-black {background-color: #101010 !important;}
+.text-black {color: #101010 !important;}
+.bg-lblack {background-color: #1a1c1a !important;}
+.bt-orange {background-color: #e65c00 !important; border-color:#e65c00 !important}
+.bt-orange:hover {background-color: #f68c20 !important;color: black !important;
+}
+
 body {
     margin: 0px;
     width: 100%;
@@ -60,18 +69,18 @@ body {
 
 #contentIndex::-webkit-scrollbar-track, #contentVideo::-webkit-scrollbar-track, #contentImage::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: #F5F5F5;
+    background-color: #7a7c7a;
     border-radius: 10px;
 }
 
 #contentIndex::-webkit-scrollbar, #contentVideo::-webkit-scrollbar, #contentImage::-webkit-scrollbar {
     width: 8px;
-    background-color: #F5F5F5;
+    background-color: #7a7c7a;
 }
 
 #contentIndex::-webkit-scrollbar-thumb, #contentVideo::-webkit-scrollbar-thumb, #contentImage::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122,153,217)), color-stop(0.72, rgb(73,125,189)), color-stop(0.86, rgb(28,58,148)));
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #e65c00), color-stop(0.9, #101010));
 }
 
 /* Header */
@@ -128,11 +137,24 @@ body {
 
 }
 
-#search img{
+#search button{
     grid-area: b;
-    width: auto;
+    width: 50%;
     height: auto;
     margin-left: 15%;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+#searchInputId {
+    grid-area: s;
+    color: black;
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    margin-left: 5%;
+    border-color: #e65c00;
+    background-color: #e65c00;
 }
 
 #login{
@@ -148,16 +170,7 @@ body {
         color: #e65c00;
     }
 
-#searchInputId {
-    grid-area: s;
-    color: black;
-    border-radius: 5px;
-    width: 100%;
-    height: auto;
-    margin-left: 5%;
-    border-color: #e65c00;
-    background-color: #e65c00;
-}
+
 
 
 /*Footer*/
@@ -221,7 +234,6 @@ body {
     font-size: 48px;
     letter-spacing: 2px;
 }
-
 
 /*Main part of page*/
 #main {

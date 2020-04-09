@@ -1,8 +1,8 @@
 ﻿@model ListImageModel
 
-    <div id="contentImage">
+    <div id="contentImage" class="bg-lblack">
         <div id="imageNewest10">
-            <p>Newest 10</p>
+            <p class="text-orange">Newest 10</p>
             <div class="swiper-container-newest">
                 <div class="swiper-wrapper">
                     @foreach (var image in Model.newestImages)
@@ -16,12 +16,12 @@
         </div>
 
         <div id="imageBest">
-            <p>Best 10</p>
+            <p class="text-orange">Best 10</p>
             <div class="swiper-container swiper-container-best">
                 <div class="swiper-wrapper">
                     @foreach (var image in Model.bestImages)
                     {
-                        <img class="swiper-slide" ondblclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description','@image.Id')" src="@image.Url"/>
+                        <img class="swiper-slide" ondblclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description.ToString()','@image.Id')" src="@image.Url"/>
                     }
                 </div>
                 <div class="swiper-pagination"></div>
@@ -30,7 +30,7 @@
         </div>
 
         <div id="imageAll">
-            <p>All pictures</p>
+            <p class="text-orange">All pictures</p>
             <div class="swiper-container swiper-container-all">
                 <div class="swiper-wrapper">
                     @foreach (var image in Model.allImages)
@@ -44,7 +44,7 @@
         </div>
 
         <div>
-            <a onclick="onClickUploadImage()" type="button" class="btn btn-success" id="buttonUploadImage">Upload your image!</a>
+            <a onclick="onClickUploadImage()" type="button" class="btn bt-orange" id="buttonUploadImage">Upload your image!</a>
         </div>
     </div>
 

@@ -11,6 +11,5 @@ namespace VideoImagePlatform.Models
         public IFormFile files { get; set; }
         public string changedname { get; set; }
         public string description { get; set; }
-
     }
 }

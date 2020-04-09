@@ -10,11 +10,17 @@
                 <h3>@video.Name</h3>
                 <h6>Views: @video.Views</h6>
                 <div></div>
-                <p>@video.Description</p>
+                @if (video.Description.Length > 450)
+                {
+                    <p>@(video.Description.Substring(0, 450) + "...")</p>
+                }
+                else {
+                    <p>@video.Description</p>
+                }
             </div>
         </a>
         <div id="cardLongButtons">
-            <a onclick="onClickEditVideo('@video.Name','@video.Description','@video.Id')" type="button" class="btn btn-primary" id="buttonEditVideo">Edit</a>
+            <a onclick="onClickEditVideo('@video.Name','@video.Description','@video.Id')" type="button" class="btn" id="buttonEditVideo">Edit</a>
             <a onclick="onClickDeleteVideo('@video.Id')" type="button" class="btn btn-danger" id="buttonDeleteVideo">Delete</a>
         </div>
     </div>

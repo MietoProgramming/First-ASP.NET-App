@@ -8,6 +8,5 @@ namespace VideoImagePlatform.Models
     public class ListVideoModel
     {
         public List<Video> allVideos { get; set; }
-
     }
 }

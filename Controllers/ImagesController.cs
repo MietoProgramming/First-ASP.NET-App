@@ -51,8 +51,6 @@ namespace VideoImagePlatform.Controllers
             using (FileStream output = System.IO.File.Create(path))
                 await files.CopyToAsync(output);
 
-            Console.WriteLine("My Name + Desc : " + name + "---------------------  " + description);
-
             // DB insert
 
             Image = new Image();
@@ -65,7 +63,6 @@ namespace VideoImagePlatform.Controllers
                 _db.Images.Add(Image);
                 _db.SaveChanges();
             }
-
 
             return RedirectToAction("Index");
         }

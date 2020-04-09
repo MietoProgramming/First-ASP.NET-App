@@ -5,19 +5,19 @@
     background-color: #1a1c1a;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 45%;
+    grid-auto-rows: auto;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
 #card {
-    /*border: 1px solid white; /*Skasować!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
     width: 100%;
+    display: block;
 }
 
-#contentIndex img {
-    width: 95%;
-    height: 75%;
+#contentIndex img, #contentIndex video {
+    width: 100%;
+    height: auto;
     padding: 3% 3% 0% 8%;
 }
 
@@ -27,18 +27,23 @@
     width: 100%;
     height: 10%;
     display: grid;
-    grid-template-columns: 68% 30%;
+    grid-template-columns: 68% 32%;
     grid-template-areas: "a b";
     color: #e65c00;
 }
 
-    #ContentDescribe h3 {
-        padding-left: 3%;
-        grid-area: a;
-        font-size: 18px;
-    }
+#ContentDescribe h3 {
+    padding-left: 3%;
+    grid-area: a;
+    font-size: 18px;
+}
 
-    #ContentDescribe p {
-        text-align: right;
-        grid-area: b;
-    }
+#ContentDescribe p {
+    text-align: right;
+    grid-area: b;
+    padding-right: 1%;
+}
+
+#search {
+    cursor:pointer;
+}

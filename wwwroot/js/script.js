@@ -24,6 +24,7 @@ function Toggle(text) {
     };
     toastr.warning(text.toString() + " doesn\'t work currently :(", "Warning!");
 }
+
 //Video js
 
 async function onClickUploadVideo() {
@@ -38,20 +39,35 @@ async function onClickUploadVideo() {
             inputAttributes: {
                 'accept': 'video/*',
                 'aria-label': 'Upload your video'
+            },
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
             }
         },
         {
             title: "Video name",
             input: 'text',
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
+            }
         },
         {
             title: "Video description",
             input: 'text',
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
+            }
         },
     ]).then((result) => { fileArr = result.value });
 
-    var n = fileArr[1];
-    var d = fileArr[2];
+    var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+    var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
     var formData = new FormData();
     formData.append("changedname", n );
     formData.append("description", d );
@@ -71,7 +87,12 @@ async function onClickUploadVideo() {
                     text: "Name: " +n+ " \n Description: " + d ,
                     showConfirmButton: true,
                     timer: 2500,
-                    onClose: () => { location.reload(true); }
+                    onClose: () => { location.reload(true); },
+                    customClass: {
+                        popup: 'bg-black',
+                        title: 'text-orange',
+                        content: 'text-orange'
+                    }
                 })
             },
             error: function (errorThrown) {
@@ -87,11 +108,11 @@ function openViewWindow(url,name,views,desc,id) {
         title: '<strong>' + name + '</strong>',
         html:
             '<video id="videoWindowToast" src="' + url + '" controls></video> '+
-            '<label id="viewsVideoWindowToast">Views: ' + views + '</label>'+
-            '<label id="descriptionVideoWindowToast" >' + desc + '</label>',
+            '<label id="viewsVideoWindowToast" class="text-orange">Views: ' + views + '</label>'+
+            '<label id="descriptionVideoWindowToast" class="text-orange" >' + desc + '</label>',
         showCloseButton: true,
         customClass: {
-            popup: 'videoWindowToastClass',
+            popup: 'videoWindowToastClass  bg-black',
         }
     })
 
@@ -119,7 +140,12 @@ function onClickDeleteVideo(id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete it!',
+        customClass: {
+            popup: 'bg-black',
+            title: 'text-orange',
+            content: 'text-orange'
+        }
     }).then((result) => {
         if (result.value) {
             $.ajax(
@@ -133,17 +159,27 @@ function onClickDeleteVideo(id) {
                                 title: 'Deleted!',
                                 text: 'Your video has been deleted.',
                                 icon: 'success',
-                                onClose: () => { location.reload(true); }
+                                onClose: () => { location.reload(true); },
+                                customClass: {
+                                    popup: 'bg-black',
+                                    title: 'text-orange',
+                                    content: 'text-orange'
+                                }
                             }
                         );
                     },
                     error: function (errorThrown) {
                         console.log(errorThrown);
-                        Swal.fire(
-                            'Something went wrong!',
-                            'Your video has not been deleted.',
-                            'error'
-                        );
+                        Swal.fire({
+                            title:'Something went wrong!',
+                            text:'Your video has not been deleted.',
+                            icon: 'error',
+                            customClass: {
+                                popup: 'bg-black',
+                                title: 'text-orange',
+                                content: 'text-orange'
+                            }
+                        });
                     }
                 }
             );
@@ -155,19 +191,24 @@ function onClickEditVideo(name,desc,id) {
     Swal.fire({
         title: 'Edit title or description',
         html:
-            '<label> Title </label><br/>' + 
+            '<label class="text-orange"> Title </label><br/>' + 
             '<input id="nameEditWindow" class="swal2-input" value="' + name +'"/><br/>' +
-            '<label> Description </label><br/>' +
+            '<label class="text-orange"> Description </label><br/>' +
             '<input id="descEditWindow" class="swal2-input" value="' + desc +'"/><br/>',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText : 'Don\'t edit!',
-        confirmButtonText: 'Edit!'
+        confirmButtonText: 'Edit!',
+        customClass: {
+            popup: 'bg-black',
+            title: 'text-orange',
+            content: 'text-orange'
+        }
     }).then((result) => {
         if (result.value) {
-                var newName = document.getElementById('nameEditWindow').value;
-                var newDesc = document.getElementById('descEditWindow').value;
+            var newName = document.getElementById('nameEditWindow').value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            var newDesc = document.getElementById('descEditWindow').value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
                 if (newName != "" && newDesc != "") {
                     $.ajax(
                         {
@@ -184,27 +225,42 @@ function onClickEditVideo(name,desc,id) {
                                         title: 'Changed!',
                                         text: 'Your video has been changed.',
                                         icon: 'success',
-                                        onClose: () => { location.reload(true); }
+                                        onClose: () => { location.reload(true); },
+                                        customClass: {
+                                            popup: 'bg-black',
+                                            title: 'text-orange',
+                                            content: 'text-orange'
+                                        }
                                     }
                                 );
                             },
                             error: function (errorThrown) {
                                 console.log(errorThrown);
-                                Swal.fire(
-                                    'Something went wrong!',
-                                    'Your video has not been changed.',
-                                    'error'
-                                );
+                                Swal.fire({
+                                    title:'Something went wrong!',
+                                    text:'Your video has not been changed.',
+                                    icon: 'error',
+                                    customClass: {
+                                        popup: 'bg-black',
+                                        title: 'text-orange',
+                                        content: 'text-orange'
+                                    }
+                                });
                             }
                         }
                     );
                 }
                 else {
-                    Swal.fire(
-                        'Name and description can\'t be empty!',
-                        'Every video wants to have name and description :)',
-                        'error'
-                    );
+                    Swal.fire({
+                        title:'Name and description can\'t be empty!',
+                        text:'Every video wants to have name and description :)',
+                        icon: 'error',
+                        customClass: {
+                            popup: 'bg-black',
+                            title: 'text-orange',
+                            content: 'text-orange'
+                        }
+                    });
                 }
             }
         })
@@ -224,20 +280,35 @@ async function onClickUploadImage() {
             inputAttributes: {
                 'accept': 'image/*',
                 'aria-label': 'Upload your image'
+            },
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
             }
         },
         {
             title: "Image name",
             input: 'text',
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
+            }
         },
         {
             title: "Image description",
             input: 'text',
+            customClass: {
+                popup: 'bg-black',
+                title: 'text-orange',
+                content: 'text-orange'
+            }
         },
     ]).then((result) => { fileArr = result.value });
 
-    var n = fileArr[1];
-    var d = fileArr[2];
+    var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+    var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
     var formData = new FormData();
     formData.append("changedname", n);
     formData.append("description", d);
@@ -256,7 +327,12 @@ async function onClickUploadImage() {
                     title: 'Image has been saved',
                     text: "Name: " + n + " \n Description: " + d,
                     showConfirmButton: true,
-                    timer: 1500
+                    timer: 1500,
+                    customClass: {
+                        popup: 'bg-black',
+                        title: 'text-orange',
+                        content: 'text-orange'
+                    }
                 }).then(() =>
                 {
                     const reader = new FileReader()
@@ -265,7 +341,12 @@ async function onClickUploadImage() {
                             title: 'Your uploaded picture',
                             imageUrl: e.target.result,
                             imageAlt: 'The uploaded picture',
-                            onClose: () => { location.reload(true); }
+                            onClose: () => { location.reload(true); },
+                            customClass: {
+                                popup: 'bg-black',
+                                title: 'text-orange',
+                                content: 'text-orange'
+                            }
                         })
                     }
                     reader.readAsDataURL(fileArr[0])
@@ -281,18 +362,18 @@ async function onClickUploadImage() {
 
 function openViewWindowImage(url, name, views, desc, id) {
     Swal.fire({
-        title: '<strong>' + name + '</strong>',
+        title: '<strong class="text-orange">' + name + '</strong>',
         html:
             '<img id="imageWindowToast" src="' + url + '"></img> ' +
-            '<label id="viewsImageWindowToast">Views: ' + views + '</label>' +
-            '<label id="descriptionImageWindowToast" >' + desc + '</label>' +
+            '<label id="viewsImageWindowToast" class="text-orange">Views: ' + views + '</label>' +
+            '<label id="descriptionImageWindowToast" class="text-orange">' + desc + '</label>' +
             '<div id="cardLongButtonsImage">' +
-            `<a onclick="onClickEditImage('` + name + `','` + desc + `','` + id + `')" type="button" class= "btn btn-primary text-white" id="buttonEditImage" > Edit</a>` +
+            `<a onclick="onClickEditImage('` + name + `','` + desc + `','` + id + `')" type="button" class= "btn bt-orange" id="buttonEditImage" > Edit</a>` +
             `<a onclick="onClickDeleteImage('` + id + `')" type="button" class="btn btn-danger text-white" id="buttonDeleteImage">Delete</a>` +
             '</div>',
         showCloseButton: true,
         customClass: {
-            popup: 'imageWindowToastClass',
+            popup: 'imageWindowToastClass bg-black',
         }
     })
 
@@ -316,7 +397,12 @@ function onClickDeleteImage(id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, delete it!',
+        customClass: {
+            popup: 'bg-black',
+            title: 'text-orange',
+            content: 'text-orange'
+        }
     }).then((result) => {
         if (result.value) {
             $.ajax(
@@ -329,16 +415,26 @@ function onClickDeleteImage(id) {
                             title:'Deleted!',
                             text:'Your image has been deleted.',
                             icon: 'success',
-                            onClose: () => { location.reload(true); }
+                            onClose: () => { location.reload(true); },
+                            customClass: {
+                                popup: 'bg-black',
+                                title: 'text-orange',
+                                content: 'text-orange'
+                            }
                         });
                     },
                     error: function (errorThrown) {
                         console.log(errorThrown);
-                        Swal.fire(
-                            'Something went wrong!',
-                            'Your image has not been deleted.',
-                            'error'
-                        );
+                        Swal.fire({
+                            title:'Something went wrong!',
+                            text:'Your image has not been deleted.',
+                            icon: 'error',
+                            customClass: {
+                                popup: 'bg-black',
+                                title: 'text-orange',
+                                content: 'text-orange'
+                            }
+                        });
                     }
                 }
             );
@@ -350,19 +446,23 @@ function onClickEditImage(name, desc, id) {
     Swal.fire({
         title: 'Edit title or description',
         html:
-            '<label> Title </label><br/>' +
+            '<label class="text-orange"> Title </label><br/>' +
             '<input id="nameEditWindow" class="swal2-input" value="' + name + '"/><br/>' +
-            '<label> Description </label><br/>' +
+            '<label class="text-orange"> Description </label><br/>' +
             '<input id="descEditWindow" class="swal2-input" value="' + desc + '"/><br/>',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         cancelButtonText: 'Don\'t edit!',
-        confirmButtonText: 'Edit!'
+        confirmButtonText: 'Edit!',
+        customClass: {
+            popup: 'bg-black',
+            title: 'text-orange',
+        }
     }).then((result) => {
         if (result.value) {
-            var newName = document.getElementById('nameEditWindow').value;
-            var newDesc = document.getElementById('descEditWindow').value;
+            var newName = document.getElementById('nameEditWindow').value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            var newDesc = document.getElementById('descEditWindow').value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
             if (newName != "" && newDesc != "") {
                 $.ajax(
                     {
@@ -378,26 +478,41 @@ function onClickEditImage(name, desc, id) {
                                 title:'Changed!',
                                 text:'Your image has been changed.',
                                 icon: 'success',
-                                onClose: () => { location.reload(true); }
+                                onClose: () => { location.reload(true); },
+                                customClass: {
+                                    popup: 'bg-black',
+                                    title: 'text-orange',
+                                    content: 'text-orange'
+                                }
                             });
                         },
                         error: function (errorThrown) {
                             console.log(errorThrown);
-                            Swal.fire(
-                                'Something went wrong!',
-                                'Your image has not been changed.',
-                                'error'
-                            );
+                            Swal.fire({
+                                title: 'Something went wrong!',
+                                text: 'Your image has not been changed.',
+                                icon: 'error',
+                                customClass: {
+                                    popup: 'bg-black',
+                                    title: 'text-orange',
+                                    content: 'text-orange'
+                                }
+                            });
                         }
                     }
                 );
             }
             else {
-                Swal.fire(
-                    'Name and description can\'t be empty!',
-                    'Every image wants to have name and description :)',
-                    'error'
-                );
+                Swal.fire({
+                    title: 'Name and description can\'t be empty!',
+                    text: 'Every image wants to have name and description :)',
+                    icon: 'error',
+                    customClass: {
+                        popup: 'bg-black',
+                        title: 'text-orange',
+                        content: 'text-orange'
+                    }
+                });
             }
         }
     })
@@ -421,6 +536,9 @@ var swiperNewest = new Swiper('.swiper-container-newest', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="bg-orange ' + className + '"></span>';
+        }
     },
 });
 
@@ -431,6 +549,9 @@ var swiperBest = new Swiper('.swiper-container', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        renderBullet: function (index, className) {
+            return '<span class="bg-orange ' + className + '"></span>';
+        }
     },
     breakpoints: {
         640: {
@@ -455,6 +576,9 @@ var swiperAll = new Swiper('.swiper-container-all', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        renderBullet: function (className) {
+            return '<span class="bg-orange ' + className + '"></span>';
+        },
     },
     breakpoints: {
         640: {

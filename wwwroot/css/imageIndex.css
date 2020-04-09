@@ -59,14 +59,7 @@
     border: 0;
     margin: 1em 0;
     padding: 0;
-    background: linear-gradient(to right,
-    lightgrey 0%,
-    lightgrey 10%,
-    rgba(0,0,0,0.41) 40%,
-    rgba(0,0,0,0.8) 50%,
-    rgba(0,0,0,0.46) 60%,
-    lightgrey 90%,
-    lightgrey 100%);
+    background: linear-gradient(to right, #1a1c1a 0%, #1a1c1a 10%, #e65c00 50%, #1a1c1a 90%, #1a1c1a 100%);
 }
 
 .swiper-container-best {
@@ -81,7 +74,6 @@
     text-align: center;
     font-size: 18px;
     background: #fff;
-    /* Center slide text vertically */
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -158,19 +150,27 @@ swiper-slide-all {
 #viewsImageWindowToast {
     display: block;
     text-align: right;
+    color: #e65c00 !important;
 }
 
 #descriptionImageWindowToast {
     display: block;
     text-align: left;
+    color: #e65c00 !important;
 }
 
 .imageWindowToastClass {
-    max-height: 90%;
-    max-width: 90%;
-    height: 90%;
+    max-height: 98%;
+    max-width: 95%;
+    height: 98%;
     width: 80% !important;
+    background-color: #101010 !important;
 }
+
+.imageWindowToastClass strong {
+    color: #e65c00 !important;
+}
+
 
 #cardLongButtonsImage {
     width: 100%;

@@ -1,2 +1,26 @@
-# VideoImage Platform
-My first ASP.NET app based on HTML, CSS, JS and C#. Simple platform with videos and pictures which you can upload.
+# MojitoTube Platform
+My first ASP.NET app.
+
+* Upload, delete and edit videos
+* Upload, delete and edit pictures
+* Views counter
+* Search engine for videos and images
+* Fit toasts, alerts and pop-up windows
+
+**Home page**<br/>
+![Home page](/projectImgs/home.png)
+
+**Video page**<br/>
+![Video page](/projectImgs/video.png)
+
+**Image page**<br/>
+![Image page](/projectImgs/image.png)
+
+**Watch window**<br/>
+![Watch window](/projectImgs/window.png)
+
+**Search result ("Title" example)**<br/>
+![Search result](/projectImgs/search.png)
+
+1.0.0 version:
+* Basic project without some features like sing in or favourites site

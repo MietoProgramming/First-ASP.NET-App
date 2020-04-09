@@ -1,11 +1,23 @@
-﻿<div id="contentIndex">
-    @for (int i = 0; i < 12; i++)
+﻿@model ListImageVideoModel
+
+<div id="contentIndex">
+    @foreach (var video in Model.ListVideos)
     {
         <a id="card">
-            <img src="~/imgs/thumbnail.jpg" alt="Miniaturka" asp-append-version="true">
+            <video src="@video.Url" onclick="openViewWindow('@video.Url','@video.Name','@video.Views','@video.Description','@video.Id')"></video>
             <div id="ContentDescribe">
-                <h3>Really loooong title of that video oooooo really @i</h3>
-                <p>Views: @((i+1).ToString() + "00 000")</p>
+                <h3>@video.Name</h3>
+                <p>Views: @video.Views</p>
+            </div>
+        </a>
+    }
+    @foreach (var image in Model.ListImages)
+    {
+        <a id="card">
+            <img src="@image.Url" alt="@image.Name" onclick="openViewWindowImage('@image.Url','@image.Name','@image.Views','@image.Description','@image.Id')"/>
+            <div id="ContentDescribe">
+                <h3>@image.Name</h3>
+                <p>Views: @image.Views</p>
             </div>
         </a>
     }

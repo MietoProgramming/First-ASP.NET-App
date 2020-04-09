@@ -38,7 +38,7 @@ namespace VideoImagePlatform.Controllers
             var name = model.changedname;
             var description = model.description;
             var files = model.files;
-            string filename;// filename in directory
+            string filename;
             string path;
 
             filename = ContentDispositionHeaderValue.Parse(files.ContentDisposition).FileName.Trim('"');
@@ -48,8 +48,6 @@ namespace VideoImagePlatform.Controllers
             path = this.GetPathAndFilename(filename);
             using (FileStream output = System.IO.File.Create(path))
                 await files.CopyToAsync(output);
-
-            Console.WriteLine("My Name + Desc : " + name + "---------------------  " + description);
 
             // DB insert
 
@@ -63,8 +61,6 @@ namespace VideoImagePlatform.Controllers
                 _db.Videos.Add(Video);
                 _db.SaveChanges();
             }
-
-
             return RedirectToAction("Index");
         }
 
@@ -101,7 +97,6 @@ namespace VideoImagePlatform.Controllers
                 _db.SaveChanges();
             }
         }
-
         private string EnsureCorrectFilename(string filename)
         {
             if (filename.Contains("\\"))
@@ -114,6 +109,5 @@ namespace VideoImagePlatform.Controllers
         {
             return _env.WebRootPath + "\\UploadedContent\\uploadedVideos\\" + filename;
         }
-
     }
 }

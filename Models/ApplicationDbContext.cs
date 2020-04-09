@@ -12,9 +12,7 @@ namespace VideoImagePlatform.Models
         {
            
         }
-
         public DbSet<Video> Videos { get; set; }
         public DbSet<Image> Images { get; set; }
-
     }
 }

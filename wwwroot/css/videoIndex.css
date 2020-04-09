@@ -2,11 +2,10 @@
     float: left;
     width: 100%;
     height: 100%;
-    background-color: blueviolet;
+    background-color: #1a1c1a;
     display: grid;
     grid-auto-rows: 20%;
     overflow-y: scroll;
-    /*overflow-x: none;*/
 }
 
 #cardLongBox {
@@ -15,7 +14,7 @@
     grid-auto-rows: 100%;
     width: 100%;
     height: 100%;
-    border: 1px solid white; /*Skasować!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    border-bottom: 1px solid #e65c00;
 }
 
 #cardLong {
@@ -47,19 +46,22 @@
 #buttonEditVideo {
     grid-column-start: 2;
     grid-row-start: 2;
+    background-color: #e65c00;
 }
 
 #buttonDeleteVideo {
     grid-column-start: 2;
     grid-row-start: 4;
+
 }
 
 #cardLongDescribe {
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    grid-template-areas: "a" "b" "c";
+    grid-template-areas: "a" "a" "b" "c" "c" "c";
     width: 100%;
     height: 100%;
+    color: #e65c00;
 }
 
 #cardLongDescribe h3 {
@@ -76,8 +78,10 @@
 
 #cardLongDescribe p {
     grid-area: c;
+    grid-row-start: 4;
     width: 100%;
     height: 100%;
+    font-size: 14px;
 }
 
 #buttonUploadVideo {
@@ -87,36 +91,46 @@
     font-size: 1em;
     padding: 10px;
     color: #fff;
-    border: 2px solid #06D85F;
+    border: 2px solid #f66c20;
     border-radius: 20px/50px;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease-out;
+    background-color: #e65c00;
 }
 
 #buttonUploadVideo:hover {
-    background: #06D85F;
+    background-color: #f68c20;
+    color: black;
 }
 
 #videoWindowToast {
     height: 65vh;
     max-height: 80% !important;
     max-width: 100%;
+    color: #e65c00;
 }
 
 #viewsVideoWindowToast {
     display: block;
     text-align: right;
+    color: #e65c00;
 }
 
 #descriptionVideoWindowToast {
     display: block;
     text-align: left;
+    color: #e65c00;
 }
 
 .videoWindowToastClass {
-    max-height: 90%;
-    max-width: 90%;
-    height: 90%;
+    max-height: 98%;
+    max-width: 95%;
+    height: 98%;
     width: 80% !important;
+    background-color: #1a1c1a !important;
+}
+
+.videoWindowToastClass strong {
+    color: #e65c00;
 }
