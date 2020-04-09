@@ -14,7 +14,7 @@ My first ASP.NET app.
 ![Video page](/projectImgs/video.png)
 
 **Image page**<br/>
-![Image page](/projectImgs/image.png)
+![Image page](/projectImgs/picture.png)
 
 **Watch window**<br/>
 ![Watch window](/projectImgs/window.png)
