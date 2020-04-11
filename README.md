@@ -24,3 +24,6 @@ My first ASP.NET app.
 
 1.0.0 version:
 * Basic project without some features like sing in or favourites site
+
+1.0.1 version:
+* Bug fixes

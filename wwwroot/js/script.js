@@ -64,43 +64,60 @@ async function onClickUploadVideo() {
                 content: 'text-orange'
             }
         },
-    ]).then((result) => { fileArr = result.value });
+    ]).then((result) => {
+        fileArr = result.value
+        if (result.value) {
+            var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            if (n != "" && d != "" && fileArr[0]) {
+                var formData = new FormData();
+                formData.append("changedname", n);
+                formData.append("description", d);
+                formData.append("files", fileArr[0]);
+                $.ajax(
+                    {
+                        url: "/videos/upload",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: "POST",
+                        success: () => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Video has been saved',
+                                text: "Name: " + n + " \n Description: " + d,
+                                showConfirmButton: true,
+                                timer: 2500,
+                                onClose: () => { location.reload(true); },
+                                customClass: {
+                                    popup: 'bg-black',
+                                    title: 'text-orange',
+                                    content: 'text-orange'
+                                }
+                            })
+                        },
+                        error: function (errorThrown) {
+                            console.log(errorThrown);
+                        }
 
-    var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-    var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-    var formData = new FormData();
-    formData.append("changedname", n );
-    formData.append("description", d );
-    formData.append("files", fileArr[0]);
-    $.ajax(
-        {
-            url: "/videos/upload",
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: "POST",
-            success: () => {
+                    }
+                );
+            }
+            else {
                 Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Video has been saved',
-                    text: "Name: " +n+ " \n Description: " + d ,
-                    showConfirmButton: true,
-                    timer: 2500,
-                    onClose: () => { location.reload(true); },
+                    title: 'Name and description can\'t be empty!',
+                    text: 'Every video wants to have name and description :)',
+                    icon: 'error',
                     customClass: {
                         popup: 'bg-black',
                         title: 'text-orange',
                         content: 'text-orange'
                     }
-                })
-            },
-            error: function (errorThrown) {
-               console.log(errorThrown) ;
+                });
             }
-            
         }
-    ); 
+    });         
 }
 
 function openViewWindow(url,name,views,desc,id) {
@@ -305,59 +322,60 @@ async function onClickUploadImage() {
                 content: 'text-orange'
             }
         },
-    ]).then((result) => { fileArr = result.value });
+    ]).then((result) => {
+        fileArr = result.value
+        if (result.value) {
+            var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+            if (n != "" && d != "" && fileArr[0]) {
+                var formData = new FormData();
+                formData.append("changedname", n);
+                formData.append("description", d);
+                formData.append("files", fileArr[0]);
+                $.ajax(
+                    {
+                        url: "/images/upload",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        type: "POST",
+                        success: () => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Picture has been saved',
+                                text: "Name: " + n + " \n Description: " + d,
+                                showConfirmButton: true,
+                                timer: 1500,
+                                onClose: () => { location.reload(true); },
+                                customClass: {
+                                    popup: 'bg-black',
+                                    title: 'text-orange',
+                                    content: 'text-orange'
+                                }
+                            })
+                        },
+                        error: function (errorThrown) {
+                            console.log(errorThrown);
+                        }
 
-    var n = fileArr[1].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-    var d = fileArr[2].replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-    var formData = new FormData();
-    formData.append("changedname", n);
-    formData.append("description", d);
-    formData.append("files", fileArr[0]);
-    $.ajax(
-        {
-            url: "/images/upload",
-            data: formData,
-            processData: false,
-            contentType: false,
-            type: "POST",
-            success: () => {
+                    }
+                );
+            }
+            else {
                 Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Image has been saved',
-                    text: "Name: " + n + " \n Description: " + d,
-                    showConfirmButton: true,
-                    timer: 1500,
+                    title: 'Name and description can\'t be empty!',
+                    text: 'Every picture wants to have name and description :)',
+                    icon: 'error',
                     customClass: {
                         popup: 'bg-black',
                         title: 'text-orange',
                         content: 'text-orange'
                     }
-                }).then(() =>
-                {
-                    const reader = new FileReader()
-                    reader.onload = (e) => {
-                        Swal.fire({
-                            title: 'Your uploaded picture',
-                            imageUrl: e.target.result,
-                            imageAlt: 'The uploaded picture',
-                            onClose: () => { location.reload(true); },
-                            customClass: {
-                                popup: 'bg-black',
-                                title: 'text-orange',
-                                content: 'text-orange'
-                            }
-                        })
-                    }
-                    reader.readAsDataURL(fileArr[0])
-                })
-            },
-            error: function (errorThrown) {
-                console.log(errorThrown);
+                });
             }
-
         }
-    );
+    });
 }
 
 function openViewWindowImage(url, name, views, desc, id) {
