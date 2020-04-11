@@ -22,6 +22,9 @@ My first ASP.NET app.
 **Search result ("Title" example)**<br/>
 ![Search result](/projectImgs/search.png)
 
+**Link to YouTube video**
+https://youtu.be/RPzZ_LAxrN4
+
 1.0.0 version:
 * Basic project without some features like sing in or favourites site
 
