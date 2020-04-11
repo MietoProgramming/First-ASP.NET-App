@@ -27,3 +27,6 @@ My first ASP.NET app.
 
 1.0.1 version:
 * Bug fixes
+
+1.0.2 version:
+* Bug fixes

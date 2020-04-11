@@ -19,5 +19,7 @@ namespace VideoImagePlatform.Models
 
         public int Views { get; set; }
 
+        public string realUrl { get; set; }
+
     }
 }

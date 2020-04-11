@@ -58,6 +58,7 @@ namespace VideoImagePlatform.Controllers
                 Video.Description = description;
                 Video.Url = "/UploadedContent/uploadedVideos/" + filename;
                 Video.Views = 0;
+                Video.realUrl = path;
                 _db.Videos.Add(Video);
                 _db.SaveChanges();
             }
@@ -81,8 +82,20 @@ namespace VideoImagePlatform.Controllers
             if (id != null)
             {
                 var video = _db.Videos.First(v => v.Id == id);
+                try
+                {
+                    if (System.IO.File.Exists(video.realUrl))
+                    { 
+                        System.IO.File.Delete(video.realUrl);
+                    }
+                }
+                catch (IOException ioExp)
+                {
+                    Console.WriteLine(ioExp.Message);
+                }
                 _db.Videos.Remove(video);
                 _db.SaveChanges();
+
             }
         }
 

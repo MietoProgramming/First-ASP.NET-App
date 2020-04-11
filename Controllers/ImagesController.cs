@@ -84,6 +84,17 @@ namespace VideoImagePlatform.Controllers
             if (id != null)
             {
                 var image = _db.Images.First(v => v.Id == id);
+                try
+                {
+                    if (System.IO.File.Exists(image.realUrl))
+                    {
+                        System.IO.File.Delete(image.realUrl);
+                    }
+                }
+                catch (IOException ioExp)
+                {
+                    Console.WriteLine(ioExp.Message);
+                }
                 _db.Images.Remove(image);
                 _db.SaveChanges();
             }
