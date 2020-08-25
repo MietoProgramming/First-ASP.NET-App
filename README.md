@@ -1,5 +1,9 @@
 # MojitoTube Platform
 My first ASP.NET app.
+Used libraries:
+Toastr: https://github.com/CodeSeven/toastr,
+Sweet alerts: https://github.com/sweetalert2/sweetalert2
+
 
 * Upload, delete and edit videos
 * Upload, delete and edit pictures
